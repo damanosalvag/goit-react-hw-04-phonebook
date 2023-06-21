@@ -5,16 +5,28 @@ const ContactForm = ({ setContacts, contactsList }) => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const newContact = [{ id: nanoid(5), name: name, number: number }];
-        const newContacts = contactsList.concat(newContact);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const foundName = contactsList.some((element) => element.name == name);
+    const foundNumber = contactsList.some(
+      (element) => element.number == number
+    );
+    if (foundName) {
+      return alert("The name is already exist");
+    } else if (foundNumber) {
+      return alert("The number is already exist");
+    } else {
+      const newContact = [{ id: nanoid(5), name: name, number: number }];
+      const newContacts = contactsList.concat(newContact);
       setContacts(newContacts);
+      setName('');
+      setNumber('');
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}> 
-      <label>
+    <form onSubmit={handleSubmit} className="container-form display">
+      <label className="label-field display">
         Name
         <input
           type="text"
@@ -26,7 +38,7 @@ const ContactForm = ({ setContacts, contactsList }) => {
           required
         ></input>
       </label>
-      <label>
+      <label className="label-field display">
         Number
         <input
           type="tel"

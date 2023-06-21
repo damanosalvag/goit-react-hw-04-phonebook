@@ -1,7 +1,7 @@
 const Filter = ({ filterValue, setFieldFilter }) => {
   return (
-    <div>
-      <h3>Find contacts by name</h3>
+    <div className="display">
+      <h3 className="subtitle">Find contacts by name</h3>
       <input
         type="text"
         name="filter"
