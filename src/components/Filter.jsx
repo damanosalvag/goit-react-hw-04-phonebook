@@ -8,6 +8,7 @@ const Filter = ({ filterValue, setFieldFilter }) => {
         title="Insert any name you want to search for."
         onChange={(e) => setFieldFilter(e.target.value)}
         value={filterValue}
+        className="filter-field"
       ></input>
     </div>
   );
